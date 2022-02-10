@@ -1,0 +1,223 @@
+<odoo>
+
+<!--Definiendo provider-->
+<record model="ir.actions.act_window" id="provider_list_action">
+		<field name="name">provider</field>
+		<field name="res_model">provider</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<!--Definiendo component-->
+<record model="ir.actions.act_window" id="component_list_action">
+		<field name="name">component</field>
+		<field name="res_model">component</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<!--Definiendo trademark-->
+<record model="ir.actions.act_window" id="trademark_list_action">
+		<field name="name">trademark</field>
+		<field name="res_model">trademark</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<!--Definiendo providerorder-->
+<record model="ir.actions.act_window" id="providerorder_list_action">
+		<field name="name">providerorder</field>
+		<field name="res_model">providerorder</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<!--Definiendo providerorderline-->
+<record model="ir.actions.act_window" id="providerorderline_list_action">
+		<field name="name">providerorderline</field>
+		<field name="res_model">providerorderline</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+
+	<menuitem name="APEIN" id="APEIN_menu_root"/>
+
+		<menuitem name="provider" id="APEIN_menu_provider" parent="APEIN_menu_root"/>
+
+			<menuitem name="provider" id="APEIN_list_provider" parent="APEIN_menu_provider" action="provider_list_action"/>
+
+		<menuitem name="component" id="APEIN_menu_component" parent="APEIN_menu_root"/>
+
+			<menuitem name="component" id="APEIN_list_component" parent="APEIN_menu_component" action="component_list_action"/>
+		
+		<menuitem name="trademark" id="APEIN_menu_trademark" parent="APEIN_menu_root"/>
+
+			<menuitem name="trademark" id="APEIN_list_trademark" parent="APEIN_menu_trademark" action="trademark_list_action"/>
+
+        <menuitem name="providerorder" id="APEIN_menu_providerorder" parent="APEIN_menu_root"/>
+
+			<menuitem name="providerorder" id="APEIN_list_providerorder" parent="APEIN_menu_providerorder" action="providerorder_list_action"/>
+
+        <menuitem name="providerorderline" id="APEIN_menu_providerorderline" parent="APEIN_menu_root"/>
+
+			<menuitem name="providerorderline" id="APEIN_list_providerorderline" parent="APEIN_menu_providerorderline" action="providerorderline_list_action"/>
+
+
+
+	<!--Vista form de provider-->
+	<record model="ir.ui.view" id="provider_form_view">
+		<field name="name">provider.form</field>
+		<field name="model">provider</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de provider">
+				<sheet>
+					<group>
+						<field name="provider_name"/>
+                        <field name="dni"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+    <!--Vista de tree de provider-->
+	<record model="ir.ui.view" id="provider_tree_view">
+		<field name="name">provider.tree</field>
+		<field name="model">provider</field>
+		<field name="arch" type="xml">
+			<tree string="providers">
+				<field name="provider_name"/>
+                <field name="dni"/>
+			</tree>
+		</field>
+	</record>
+
+	<!--Vista form de component-->
+	<record model="ir.ui.view" id="component_form_view">
+		<field name="name">component.form</field>
+		<field name="model">component</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de component">
+				<sheet>
+					<group>
+						<field name="component_code"/>
+                        <field name="description"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+    <!--Vista de tree de component-->
+	<record model="ir.ui.view" id="component_tree_view">
+		<field name="name">component.tree</field>
+		<field name="model">component</field>
+		<field name="arch" type="xml">
+			<tree string="components">
+				<field name="component_code"/>
+                <field name="description"/>
+			</tree>
+		</field>
+	</record>
+
+
+    <!--Vista form de trademark-->
+	<record model="ir.ui.view" id="trademark_form_view">
+		<field name="name">trademark.form</field>
+		<field name="model">trademark</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de trademark">
+				<sheet>
+					<group>
+						<field name="trademark_code"/>
+                        <field name="trademark_name"/>
+                        <field name="component_code"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+    <!--Vista de tree de trademark-->
+	<record model="ir.ui.view" id="trademark_tree_view">
+		<field name="name">trademark.tree</field>
+		<field name="model">trademark</field>
+		<field name="arch" type="xml">
+			<tree string="trademarks">
+				<field name="trademark_code"/>
+                <field name="trademark_name"/>
+                <field name="component_code"/>
+			</tree>
+		</field>
+	</record>
+
+    <!--Vista form de providerorder-->
+	<record model="ir.ui.view" id="providerorder_form_view">
+		<field name="name">providerorder.form</field>
+		<field name="model">providerorder</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de providerorder">
+				<sheet>
+					<group>
+						<field name="order_number"/>
+                        <field name="order_date"/>
+						<field name="order_days"/>
+                        <field name="provider_dni"/>
+                        <field name="provider_orderline"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <!--Vista de tree de providerorder-->
+	<record model="ir.ui.view" id="providerorder_tree_view">
+		<field name="name">providerorder.tree</field>
+		<field name="model">providerorder</field>
+		<field name="arch" type="xml">
+			<tree string="providerorders">
+				<field name="order_number"/>
+                <field name="order_date"/>
+				<field name="order_days"/>
+                <field name="provider_dni"/>
+                <field name="provider_orderline"/>
+			</tree>
+		</field>
+	</record>
+
+
+    <!--Vista form de providerorderline-->
+	<record model="ir.ui.view" id="providerorderline_form_view">
+		<field name="name">providerorderline.form</field>
+		<field name="model">providerorderline</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de providerorderline">
+				<sheet>
+					<group>
+						<field name="line_code"/>
+                        <field name="unit_number"/>
+                        <field name="ordernumber"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <!--Vista de tree de providerorderline-->
+	<record model="ir.ui.view" id="providerorderline_tree_view">
+		<field name="name">providerorderline.tree</field>
+		<field name="model">providerorderline</field>
+		<field name="arch" type="xml">
+			<tree string="providerorderlines">
+					<field name="line_code"/>
+                    <field name="unit_number"/>
+                    <field name="ordernumber"/>
+			</tree>
+		</field>
+	</record>
+
+
+
+
+
+                  
+</odoo>

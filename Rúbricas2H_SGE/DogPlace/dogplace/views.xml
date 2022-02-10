@@ -1,0 +1,136 @@
+<odoo>
+<!--Definiendo person-->
+<record model="ir.actions.act_window" id="person_list_action">
+		<field name="name">person</field>
+		<field name="res_model">person</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<!--Definiendo dogs-->
+<record model="ir.actions.act_window" id="dogs_list_action">
+		<field name="name">dogs</field>
+		<field name="res_model">dogs</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<!--Definiendo adoption-->
+<record model="ir.actions.act_window" id="adoption_list_action">
+		<field name="name">adoption</field>
+		<field name="res_model">adoption</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+
+	<menuitem name="DogPlace" id="dogplace_menu_root"/>
+
+		<menuitem name="Person" id="dogplace_menu_person" parent="dogplace_menu_root"/>
+
+			<menuitem name="Person" id="dogplace_list_person" parent="dogplace_menu_person" action="person_list_action"/>
+
+		<menuitem name="dogs" id="dogplace_menu_dogs" parent="dogplace_menu_root"/>
+
+			<menuitem name="dogs" id="dogplace_list_dogs" parent="dogplace_menu_dogs" action="dogs_list_action"/>
+		
+		<menuitem name="adoption" id="dogplace_menu_adoption" parent="dogplace_menu_root"/>
+
+			<menuitem name="adoption" id="dogplace_list_adoption" parent="dogplace_menu_adoption" action="adoption_list_action"/>
+
+	
+
+	<!--Vista form de person-->
+	<record model="ir.ui.view" id="person_form_view">
+		<field name="name">person.form</field>
+		<field name="model">person</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de person">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="surname"/>
+                        <field name="dni"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!--Vista de tree de person-->
+
+	<record model="ir.ui.view" id="person_tree_view">
+		<field name="name">person.tree</field>
+		<field name="model">person</field>
+		<field name="arch" type="xml">
+			<tree string="Personas">
+				<field name="name"/>
+				<field name="surname"/>
+                <field name="dni"/>
+			</tree>
+		</field>
+	</record>
+
+	<!--Vista form de adoption-->
+	<record model="ir.ui.view" id="adoption_form_view">
+		<field name="name">adoption.form</field>
+		<field name="model">adoption</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de adoption">
+				<sheet>
+					<group>
+						<field name="adoption_date"/>
+                        <field name="person_id"/>
+						<field name="dogs_id"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!--Vista de tree de adoption-->
+
+	<record model="ir.ui.view" id="adoption_tree_view">
+		<field name="name">adoption.tree</field>
+		<field name="model">adoption</field>
+		<field name="arch" type="xml">
+			<tree string="adoption">
+				<field name="adoption_date"/>
+                <field name="person_id"/>
+				<field name="dogs_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<!--Vista form de dogs-->
+	<record model="ir.ui.view" id="dogs_form_view">
+		<field name="name">dogs.form</field>
+		<field name="model">dogs</field>
+		<field name="arch" type="xml">
+			<form string="Formulario de dogs">
+				<sheet>
+					<group>
+						<field name="name"/>
+                        <field name="breed"/>
+						<field name="heigth"/>
+						<field name="person_id"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!--Vista de tree de dogs-->
+
+	<record model="ir.ui.view" id="dogs_tree_view">
+		<field name="name">dogs.tree</field>
+		<field name="model">dogs</field>
+		<field name="arch" type="xml">
+			<tree string="dogs">
+				<field name="name"/>
+                    <field name="breed"/>
+					<field name="heigth"/>
+					<field name="person_id"/>
+			</tree>
+		</field>
+	</record>
+
+                  
+</odoo>
